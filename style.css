@@ -1,0 +1,217 @@
+*, *::before, *::after {
+  margin: 0;
+  box-sizing: border-box;  
+  /* border: 1px solid #000; */
+}
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #aaa;
+}
+
+.function-container {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  gap: 20px;
+}
+
+.function-container .score {
+  padding: 0;
+  margin: 0;
+}
+
+#PlayPause {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+#PlayPause i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#PlayPause i:hover {
+  background-color: #ddd;
+}
+
+.score {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#game-container.transparent {
+  opacity: 0.5;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(50, 50, 50, 0.8);
+  z-index: 10;
+}
+
+.overlay h2 {
+  color: red;
+  font-family: "Poppins", sans-serif;
+  font-size: 36px;
+  letter-spacing: 1px;
+  position: relative;
+  bottom: 50px;
+}
+
+.overlay p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.overlay button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background-color: #aaa;
+}
+
+#board {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  aspect-ratio: 1/ 1;
+  background-color: #A2D149;
+  position: relative;
+}
+
+#board .row {
+  display: flex;
+  height: calc((100% / 15));
+  width: 100%;
+}
+
+#board .cell {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+#board .row:nth-child(odd) .cell:nth-child(odd),
+#board .row:nth-child(even) .cell:nth-child(even) {
+    background-color: #ABD652;
+}
+
+.snake {
+  position: absolute;
+  width: calc((100% / 15));
+  aspect-ratio: 1/1;
+  background-color: #44A3FF;
+}
+
+.snake.snake-head {
+  background-color: #4473E7;
+}
+
+.food {
+  position: absolute;
+  width: calc((100% / 15));
+  aspect-ratio: 1/1;
+  background-color: #E7461C;
+  border-radius: 50%;
+}
+
+.mobile-controls {
+  display: none;
+}
+
+@media (max-width: 600px) {  
+  .function-container {
+    position: relative;
+    top: -20%;
+  }
+
+  #board {
+    width: 90%;
+    position: relative;
+    top: -15%;
+  }a
+
+  .overlay h2 {
+    font-size: 30px;
+    bottom: 0;
+  }
+
+  #board .start {
+    display: none;
+  }
+
+  .mobile-controls {
+    position: absolute;
+    width: 320px;
+    aspect-ratio: 1/1;
+    bottom: 40px;
+    display: block;
+  }
+
+  .mobile-controls button {
+    position: absolute;
+    font-size: 30px;
+    height: 70px;
+    width: 70px;
+    /* padding: 20px; */
+  }
+
+  .mobile-controls .up {
+    left: 50%;
+    top: 40px;
+    transform: translate(-50%, 0);
+  }
+  .mobile-controls .down {
+    left: 50%;
+    bottom: 40px;
+    transform: translate(-50%, 0);
+  }
+  .mobile-controls .left {
+    left: 40px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  .mobile-controls .right {
+    right: 40px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+
+  .mobile-controls .start {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    background-color: #E7461CAA;
+    width: 70px;
+    height: 40px;
+  }
+}

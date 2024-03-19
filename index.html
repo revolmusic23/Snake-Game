@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/sf-mono" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+
+    <div class="function-container">
+      <button id="PlayPause" @click="togglePause">
+        <i v-if="isPaused" class="fa-solid fa-play"></i>
+        <i v-else class="fa-solid fa-pause"></i>
+      </button>
+      <div class="score">Score: {{ score }}</div>
+    </div>
+    
+    <div id="board" :class="{ 'transparent': !isGameActive }">
+      <div class="row" v-for="row in 15">
+        <div class="cell" v-for="col in 15"></div>
+      </div>
+      <div v-for="(segment, index) in snake" :key="index" 
+          :class="['snake', index === 0 ? 'snake-head' : '']" 
+          :style="getSegmentStyle(segment)"></div>
+      <div class="food" :style="getFoodStyle()"></div>
+      <div v-if="!isGameActive" class="overlay">
+        <h2>{{ gameOver ? 'GAME OVER' : 'READY TO START' }}</h2>
+        <button class="start" @click="startGame">Start</button>
+      </div>
+    </div>
+
+    <div class="mobile-controls">
+      <button class="up" @click="setDirection('UP')">↑</button>
+      <button class="right" @click="setDirection('RIGHT')">→</button>
+      <button class="down" @click="setDirection('DOWN')">↓</button>
+      <button class="left" @click="setDirection('LEFT')">←</button>
+      <button class="start" @click="startGame">Start</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
