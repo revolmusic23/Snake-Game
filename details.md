@@ -1,6 +1,4 @@
-# GliaCloud Frontend Homework
-
----
+# Frontend Homework
 
 ## 1. Snake Game
 
