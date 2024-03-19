@@ -148,15 +148,30 @@ html, body, #app {
 }
 
 @media (max-width: 600px) {  
-  .function-container {
+  .function-container button {
     position: absolute;
-    top: 2%;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  #PlayPause i {
+    color: black;
+  }
+
+  #PlayPause i:hover {
+    background-color: transparent;
+  }
+
+  .function-container .score {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
   }
 
   #board {
     width: 80%;
     position: absolute;
-    top: 15%;
+    top: 5%;
   }
 
   .overlay h2 {
@@ -172,15 +187,20 @@ html, body, #app {
     position: absolute;
     width: 50%;
     aspect-ratio: 1/1;
-    bottom: 40px;
+    bottom: 10px;
     display: block;
   }
 
   .mobile-controls button {
     position: absolute;
-    font-size: 30px;
-    width: 30%;
+    font-size: 28px;
+    width: 25%;
     aspect-ratio: 1/1;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
   }
 
   .mobile-controls .up {

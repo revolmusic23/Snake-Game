@@ -11,7 +11,7 @@ new Vue({
       ArrowRight: 'RIGHT',
     },
     gameSpeed: 400,
-    isPaused: false,
+    isPaused: true,
     isGameActive: false,
     gameOver: false,
     score: 0,
@@ -46,6 +46,7 @@ new Vue({
       this.food = [8, 11];
       this.currentDirection = 'RIGHT';
       this.score = 0;
+      this.isPaused = false;
       this.moveInterval = setInterval(this.moveSnake, this.gameSpeed);
     },
     endGame() {
@@ -149,7 +150,7 @@ new Vue({
     getSegmentStyle(segment) {
       const size = this.segmentSize;
       const unit = size.includes('vw') ? 'vw' : 'px';
-      const factor = size.includes('vw') ? (90 / 15) : 40;
+      const factor = size.includes('vw') ? (80 / 15) : 40;
   
       return {
         top: (segment[0] * factor) + unit,
@@ -159,7 +160,7 @@ new Vue({
     getFoodStyle() {
       const size = this.segmentSize;
       const unit = size.includes('vw') ? 'vw' : 'px';
-      const factor = size.includes('vw') ? (90 / 15) : 40;
+      const factor = size.includes('vw') ? (80 / 15) : 40;
   
       return {
         top: (this.food[0] * factor) + unit,
@@ -171,7 +172,7 @@ new Vue({
   },
   computed: {
     segmentSize() {
-      return window.innerWidth <= 600 ? (90 / 15) + 'vw' : '40px';
+      return window.innerWidth <= 600 ? (80 / 15) + 'vw' : '40px';
     }
   },
 });
